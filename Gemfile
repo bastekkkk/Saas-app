@@ -40,6 +40,8 @@ gem "haml-rails", "~> 1.0"
 gem 'jquery-rails'
 gem 'simple_form'
 gem "font-awesome-rails"
+gem 'devise'
+gem 'milia', :git => 'git://github.com/jekuno/milia.git', :branch => 'rails5-support'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -68,3 +70,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'recaptcha', require: 'recaptcha/rails'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
