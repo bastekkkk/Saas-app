@@ -1,0 +1,14 @@
+%h1= t('.resend_confirmation_instructions')
+= form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, class: "form login" }) do |f|
+  = bootstrap_devise_error_messages!
+  = hidden_field_tag :confirmation_token, @confirmation_token
+  .form-group
+    = f.label :password, class: "control-label"
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confrimation, class: "control-label"
+    = f.password_field :password_confrimation, class: 'form-control'
+
+  .form-group
+    = f.submit 'Create password', class: 'btn btn-primary'
+= render 'devise/shared/links'

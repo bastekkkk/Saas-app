@@ -15,32 +15,26 @@
     %link{:crossorigin => "anonymous", :href => "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css", :integrity => "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO", :rel => "stylesheet"}
 
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %a.navbar-brand(href="#") SaaSApp
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
-
+    .navbar.navbar-expand-lg.navbar-light{style: "background-color: #bac7db;"}
+      .navbar-brand
+        %h1.brend
+          SaaSApp
+      .navbar-collapse.col-md-12
+        %ul.nav.navbar-right.col-md-4
+          - if current_user
+            %li.col-md-8.user-name
+              =link_to ('<i class="fa fa-user"></i>' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: "Edit profile"
+            %li.col-md-1
+              &nbsp;
+            %li.col-md-3.logout
+              =link_to 'Logout' , destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', method: :delete
+          - else
+            %li.col-md-4
+              =link_to 'Sign up' , new_user_registration_path, class: 'btn btn-primary' , title: 'Sign up'
     .container
       .row
-        .col-lg-9
+        .col-lg-12
           = bootstrap_flash
           = yield
-        .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
       %footer
         %p &copy; Company 2018
