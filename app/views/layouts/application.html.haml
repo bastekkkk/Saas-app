@@ -19,7 +19,11 @@
       .navbar-brand
         %h1.brend
           SaaSApp
-      .navbar-collapse.col-md-12
+      .navbar-collapse.collapse.navbar-responsive-collapse
+        %ul.nav.navbar-nav
+          - if current_user
+            %li
+              =link_to ('<i class: "fa fa-users"</i> Add Members').html_safe, new_member_path, class: 'navbar-link btn btn-primary'
         %ul.nav.navbar-right.col-md-4
           - if current_user
             %li.col-md-8.user-name
